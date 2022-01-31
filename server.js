@@ -1,6 +1,7 @@
 const { urlencoded } = require('express');
 const express=require('express');
 const mongoose=require('mongoose');
+const Article=require('./models/article');
 const articleRouter=require('./routes/articles');
 
 mongoose.connect("mongodb://localhost/blog");
@@ -12,12 +13,8 @@ app.use(express.urlencoded({
     extended:false
 }))
 
-app.get('/',(req,res)=>{
-    const articles=[{
-        title:'Test Article',
-        createdAt: new Date(),
-        description: "Test Description"
-    }];
+app.get('/',async (req,res)=>{
+    const articles= await Article.find().sort({createdAt: 'desc'});
     res.render('index',{articles:articles});
 });
 
