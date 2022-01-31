@@ -24,8 +24,13 @@
                     </div>
                 </div>
                 <div>
-                    <a href="/articles/<%=articles.id%>" class="btn btn-primary">Read More</a>
-                    <a href="/articles/<%=articles.id%>" class="btn btn-secondary">Edit</a>
+                    <a href="/articles/<%=articles.slug%>" class="btn btn-primary">Read More</a>
+                    <a href="/articles/<%=articles.slug%>" class="btn btn-secondary">Edit</a>
+                        <form action="/articles/<%=articles.id %>?_method=DELETE" method="POST" class="d-inline">
+                            <button type="submit" class="btn btn-danger">
+                                Delete
+                            </button>
+                        </form>
                 </div>
             </div>
             
